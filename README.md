@@ -171,6 +171,11 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+	// You must refetch the issue to get Fields, etc.
+	issue, _, _ = jiraClient.Issue.Get(issue.Key, nil)
+	if err != nil {
+		panic(err)
+	}
 
 	fmt.Printf("%s: %+v\n", issue.Key, issue.Fields.Summary)
 }
